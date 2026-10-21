@@ -1,0 +1,591 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CV - Hồ Sơ Ứng Tuyển</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: #f5f5f5;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 40px auto;
+            background: white;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+            overflow: hidden;
+        }
+
+        .header {
+            background: linear-gradient(135deg, #2c3e50 0%, #3498db 100%);
+            color: white;
+            padding: 40px;
+            text-align: center;
+        }
+
+        .header h1 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 8px;
+        }
+
+        .header .title {
+            font-size: 1.2rem;
+            opacity: 0.9;
+            margin-bottom: 20px;
+        }
+
+        .contact-info {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            flex-wrap: wrap;
+            font-size: 0.95rem;
+        }
+
+        .contact-info span {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .contact-info a {
+            color: white;
+            text-decoration: none;
+            transition: opacity 0.2s;
+        }
+
+        .contact-info a:hover {
+            opacity: 0.8;
+        }
+
+        .main-content {
+            display: grid;
+            grid-template-columns: 280px 1fr;
+            min-height: 600px;
+        }
+
+        .sidebar {
+            background: #f8f9fa;
+            padding: 30px;
+            border-right: 1px solid #eee;
+        }
+
+        .section-title {
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            color: #2c3e50;
+            font-weight: 700;
+            margin-bottom: 20px;
+            padding-bottom: 8px;
+            border-bottom: 2px solid #3498db;
+        }
+
+        .skill-category {
+            margin-bottom: 24px;
+        }
+
+        .skill-category h4 {
+            font-size: 0.9rem;
+            color: #2c3e50;
+            margin-bottom: 10px;
+            font-weight: 600;
+        }
+
+        .skill-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 6px;
+        }
+
+        .skill-tag {
+            background: #3498db;
+            color: white;
+            padding: 4px 10px;
+            border-radius: 15px;
+            font-size: 0.75rem;
+            font-weight: 500;
+        }
+
+        .lang-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 8px 0;
+            border-bottom: 1px solid #eee;
+        }
+
+        .lang-item:last-child {
+            border-bottom: none;
+        }
+
+        .lang-name {
+            font-weight: 500;
+            font-size: 0.9rem;
+        }
+
+        .lang-level {
+            font-size: 0.8rem;
+            color: #666;
+        }
+
+        .main-area {
+            padding: 30px 40px;
+        }
+
+        .section {
+            margin-bottom: 35px;
+        }
+
+        .section h2 {
+            font-size: 1.3rem;
+            color: #2c3e50;
+            margin-bottom: 18px;
+            padding-bottom: 8px;
+            border-bottom: 2px solid #3498db;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .section h2::before {
+            content: "";
+            width: 6px;
+            height: 6px;
+            background: #3498db;
+            border-radius: 50%;
+        }
+
+        .job {
+            margin-bottom: 25px;
+        }
+
+        .job-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 8px;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        .job-title {
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: #2c3e50;
+        }
+
+        .job-company {
+            color: #3498db;
+            font-weight: 500;
+        }
+
+        .job-meta {
+            text-align: right;
+            font-size: 0.85rem;
+            color: #666;
+        }
+
+        .job-meta .location {
+            margin-top: 2px;
+        }
+
+        .job-desc {
+            color: #555;
+            font-size: 0.95rem;
+            margin-bottom: 10px;
+        }
+
+        .job-achievements {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        .job-achievements li {
+            position: relative;
+            padding-left: 20px;
+            margin-bottom: 6px;
+            color: #555;
+            font-size: 0.9rem;
+        }
+
+        .job-achievements li::before {
+            content: "▸";
+            position: absolute;
+            left: 0;
+            color: #3498db;
+            font-weight: bold;
+        }
+
+        .education-item {
+            margin-bottom: 20px;
+            padding-left: 15px;
+            border-left: 3px solid #3498db;
+        }
+
+        .edu-degree {
+            font-weight: 600;
+            color: #2c3e50;
+            font-size: 1rem;
+        }
+
+        .edu-school {
+            color: #3498db;
+            font-weight: 500;
+            margin-top: 2px;
+        }
+
+        .edu-meta {
+            font-size: 0.85rem;
+            color: #666;
+            margin-top: 4px;
+        }
+
+        .project {
+            margin-bottom: 20px;
+            padding: 15px;
+            background: #f8f9fa;
+            border-radius: 6px;
+            border-left: 3px solid #3498db;
+        }
+
+        .project-title {
+            font-weight: 600;
+            color: #2c3e50;
+            margin-bottom: 4px;
+        }
+
+        .project-desc {
+            color: #555;
+            font-size: 0.9rem;
+            margin-bottom: 8px;
+        }
+
+        .project-tech {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 6px;
+        }
+
+        .tech-tag {
+            background: #e8f0fe;
+            color: #3498db;
+            padding: 2px 8px;
+            border-radius: 10px;
+            font-size: 0.75rem;
+            font-weight: 500;
+        }
+
+        .cert-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 12px 0;
+            border-bottom: 1px solid #eee;
+        }
+
+        .cert-item:last-child {
+            border-bottom: none;
+        }
+
+        .cert-name {
+            font-weight: 500;
+            color: #2c3e50;
+        }
+
+        .cert-date {
+            font-size: 0.85rem;
+            color: #666;
+        }
+
+        @media print {
+            body {
+                background: white;
+            }
+            .container {
+                box-shadow: none;
+                margin: 0;
+                max-width: none;
+            }
+            .main-content {
+                display: block;
+            }
+            .sidebar {
+                border-right: none;
+                border-bottom: 1px solid #eee;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .main-content {
+                grid-template-columns: 1fr;
+            }
+            .sidebar {
+                border-right: none;
+                border-bottom: 1px solid #eee;
+            }
+            .header {
+                padding: 30px 20px;
+            }
+            .header h1 {
+                font-size: 2rem;
+            }
+            .main-area {
+                padding: 25px;
+            }
+            .contact-info {
+                gap: 15px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header class="header">
+            <h1>Nguyễn Văn An</h1>
+            <div class="title">Senior Frontend Developer</div>
+            <div class="contact-info">
+                <span>📍 Hà Nội, Việt Nam</span>
+                <span>📞 <a href="tel:+84901234567">+84 90 123 4567</a></span>
+                <span>✉️ <a href="mailto:nguyenvanan@email.com">nguyenvanan@email.com</a></span>
+                <span>🔗 <a href="https://linkedin.com/in/nguyenvanan" target="_blank">linkedin.com/in/nguyenvanan</a></span>
+                <span>💻 <a href="https://github.com/nguyenvanan" target="_blank">github.com/nguyenvanan</a></span>
+            </div>
+        </header>
+
+        <div class="main-content">
+            <aside class="sidebar">
+                <section>
+                    <h3 class="section-title">Kỹ Năng</h3>
+                    <div class="skill-category">
+                        <h4>Frontend</h4>
+                        <div class="skill-tags">
+                            <span class="skill-tag">React</span>
+                            <span class="skill-tag">TypeScript</span>
+                            <span class="skill-tag">Next.js</span>
+                            <span class="skill-tag">Vue.js</span>
+                            <span class="skill-tag">Tailwind CSS</span>
+                            <span class="skill-tag">Redux</span>
+                            <span class="skill-tag">Vite</span>
+                        </div>
+                    </div>
+                    <div class="skill-category">
+                        <h4>Backend & Tools</h4>
+                        <div class="skill-tags">
+                            <span class="skill-tag">Node.js</span>
+                            <span class="skill-tag">Express</span>
+                            <span class="skill-tag">GraphQL</span>
+                            <span class="skill-tag">PostgreSQL</span>
+                            <span class="skill-tag">MongoDB</span>
+                            <span class="skill-tag">Docker</span>
+                            <span class="skill-tag">Git</span>
+                            <span class="skill-tag">CI/CD</span>
+                        </div>
+                    </div>
+                    <div class="skill-category">
+                        <h4>Khác</h4>
+                        <div class="skill-tags">
+                            <span class="skill-tag">Agile/Scrum</span>
+                            <span class="skill-tag">Testing</span>
+                            <span class="skill-tag">Performance</span>
+                            <span class="skill-tag">Accessibility</span>
+                            <span class="skill-tag">Mentoring</span>
+                        </div>
+                    </div>
+                </section>
+
+                <section style="margin-top: 30px;">
+                    <h3 class="section-title">Ngôn Ngữ</h3>
+                    <div class="lang-item">
+                        <span class="lang-name">Tiếng Việt</span>
+                        <span class="lang-level">Native</span>
+                    </div>
+                    <div class="lang-item">
+                        <span class="lang-name">English</span>
+                        <span class="lang-level">IELTS 7.5</span>
+                    </div>
+                    <div class="lang-item">
+                        <span class="lang-name">Japanese</span>
+                        <span class="lang-level">N3</span>
+                    </div>
+                </section>
+
+                <section style="margin-top: 30px;">
+                    <h3 class="section-title">Sở Thích</h3>
+                    <div class="skill-tags">
+                        <span class="skill-tag">Open Source</span>
+                        <span class="skill-tag">Tech Blogging</span>
+                        <span class="skill-tag">Hiking</span>
+                        <span class="skill-tag">Photography</span>
+                        <span class="skill-tag">Reading</span>
+                    </div>
+                </section>
+            </aside>
+
+            <main class="main-area">
+                <section class="section">
+                    <h2>Mục Tiêu Nghề Nghiệp</h2>
+                    <p style="color: #555; font-size: 1rem; line-height: 1.7;">
+                        Frontend Developer với 6+ năm kinh nghiệm xây dựng các ứng dụng web quy mô lớn, hiệu suất cao và thân thiện với người dùng.
+                        Chuyên gia về React ecosystem, TypeScript, và kiến trúc frontend hiện đại. Có kinh nghiệm dẫn dắt team, code review,
+                        và thiết lập quy trình phát triển. Đam mê tối ưu hiệu suất, accessibility, và chia sẻ kiến thức với cộng đồng.
+                    </p>
+                </section>
+
+                <section class="section">
+                    <h2>Kinh Nghiệm Làm Việc</h2>
+
+                    <article class="job">
+                        <div class="job-header">
+                            <div>
+                                <div class="job-title">Senior Frontend Developer</div>
+                                <div class="job-company">TechCorp Vietnam</div>
+                            </div>
+                            <div class="job-meta">
+                                <div>03/2022 - Hiện tại</div>
+                                <div class="location">Hà Nội (Hybrid)</div>
+                            </div>
+                        </div>
+                        <p class="job-desc">Dẫn dắt phát triển frontend cho sản phẩm SaaS B2B phục vụ 50,000+ users hàng ngày.</p>
+                        <ul class="job-achievements">
+                            <li>Kiến trúc lại codebase từ JavaScript sang TypeScript, giảm 40% bugs production</li>
+                            <li>Tối ưu First Contentful Paint từ 2.8s → 1.2s bằng code-splitting, lazy loading, caching</li>
+                            <li>Xây dựng Design System component library phục vụ 5 team, tăng tốc độ dev 30%</li>
+                            <li>Mentor 3 junior developers, thiết lập code review guidelines và CI/CD pipeline</li>
+                            <li>Triển khai micro-frontend architecture cho phép deploy độc lập các module</li>
+                        </ul>
+                    </article>
+
+                    <article class="job">
+                        <div class="job-header">
+                            <div>
+                                <div class="job-title">Frontend Developer</div>
+                                <div class="job-company">Fintech Solutions JSC</div>
+                            </div>
+                            <div class="job-meta">
+                                <div>06/2019 - 02/2022</div>
+                                <div class="location">Hà Nội</div>
+                            </div>
+                        </div>
+                        <p class="job-desc">Phát triển và duy trì giao diện ngân hàng số, tập trung vào bảo mật và trải nghiệm người dùng.</p>
+                        <ul class="job-achievements">
+                            <li>Xây dựng dashboard real-time cho 100,000+ tài khoản với WebSocket</li>
+                            <li>Triển khai PWA, tăng retention rate 25% trên mobile</li>
+                            <li>Tuân thủ WCAG 2.1 AA, đạt điểm accessibility 98/100</li>
+                            <li>Tự động hóa testing với Cypress, coverage > 85%</li>
+                        </ul>
+                    </article>
+
+                    <article class="job">
+                        <div class="job-header">
+                            <div>
+                                <div class="job-title">Junior Frontend Developer</div>
+                                <div class="job-company">Creative Digital Agency</div>
+                            </div>
+                            <div class="job-meta">
+                                <div>01/2018 - 05/2019</div>
+                                <div class="location">Hà Nội</div>
+                            </div>
+                        </div>
+                        <p class="job-desc">Làm việc trên các dự án website thương mại điện tử, landing page cho khách hàng đa ngành.</p>
+                        <ul class="job-achievements">
+                            <li>Phát triển 15+ dự án responsive website với Vue.js, Nuxt.js</li>
+                            <li>Tối ưu SEO technical, cải thiện Core Web Vitals</li>
+                            <li>Hợp tác chặt chẽ với UX/UI designers chuyển đổi Figma → code pixel-perfect</li>
+                        </ul>
+                    </article>
+                </section>
+
+                <section class="section">
+                    <h2>Giáo Dục</h2>
+
+                    <div class="education-item">
+                        <div class="edu-degree">Thạc sĩ Khoa học Máy tính</div>
+                        <div class="edu-school">Đại học Bách Khoa Hà Nội</div>
+                        <div class="edu-meta">2016 - 2018 | GPA: 3.8/4.0</div>
+                    </div>
+
+                    <div class="education-item">
+                        <div class="edu-degree">Cử nhân Kỹ thuật phần mềm</div>
+                        <div class="edu-school">Đại học Công nghệ - ĐHQG Hà Nội</div>
+                        <div class="edu-meta">2012 - 2016 | GPA: 3.6/4.0 | Xuất sắc</div>
+                    </div>
+                </section>
+
+                <section class="section">
+                    <h2>Dự Án Nổi Bật</h2>
+
+                    <div class="project">
+                        <div class="project-title">E-Commerce Platform (Side Project)</div>
+                        <div class="project-desc">Platform thương mại điện tử fullstack với Next.js 14, Prisma, PostgreSQL. Hỗ trợ multi-vendor, thanh toán VNPay/MoMo, real-time chat.</div>
+                        <div class="project-tech">
+                            <span class="tech-tag">Next.js 14</span>
+                            <span class="tech-tag">TypeScript</span>
+                            <span class="tech-tag">Prisma</span>
+                            <span class="tech-tag">PostgreSQL</span>
+                            <span class="tech-tag">Tailwind</span>
+                            <span class="tech-tag">Docker</span>
+                        </div>
+                    </div>
+
+                    <div class="project">
+                        <div class="project-title">Open Source: React Performance Monitor</div>
+                        <div class="project-desc">Thư viện giám sát hiệu suất React component real-time (2.5k⭐ GitHub). Tích hợp DevTools, hỗ trợ flame graph, render tracking.</div>
+                        <div class="project-tech">
+                            <span class="tech-tag">React</span>
+                            <span class="tech-tag">TypeScript</span>
+                            <span class="tech-tag">Rollup</span>
+                            <span class="tech-tag">Jest</span>
+                        </div>
+                    </div>
+
+                    <div class="project">
+                        <div class="project-title">Task Management Dashboard</div>
+                        <div class="project-desc">Dashboard quản lý dự án Agile với drag-and-drop, real-time collaboration, báo cáo burndown chart, sprint planning.</div>
+                        <div class="project-tech">
+                            <span class="tech-tag">React</span>
+                            <span class="tech-tag">Redux Toolkit</span>
+                            <span class="tech-tag">Socket.io</span>
+                            <span class="tech-tag">Chart.js</span>
+                            <span class="tech-tag">Material UI</span>
+                        </div>
+                    </div>
+                </section>
+
+                <section class="section">
+                    <h2>Chứng Chỉ & Giải Thưởng</h2>
+
+                    <div class="cert-item">
+                        <span class="cert-name">AWS Certified Developer – Associate</span>
+                        <span class="cert-date">2023</span>
+                    </div>
+                    <div class="cert-item">
+                        <span class="cert-name">Professional Scrum Master I (PSM I)</span>
+                        <span class="cert-date">2022</span>
+                    </div>
+                    <div class="cert-item">
+                        <span class="cert-name">Google UX Design Certificate</span>
+                        <span class="cert-date">2021</span>
+                    </div>
+                    <div class="cert-item">
+                        <span class="cert-name">Top 10 Vietnam Hackathon 2020</span>
+                        <span class="cert-date">2020</span>
+                    </div>
+                </section>
+            </main>
+        </div>
+    </div>
+</body>
+</html>
